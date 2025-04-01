@@ -3,57 +3,23 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #6759CD, #342D67);
+    background: linear-gradient(to right, #342D67, #6759CD);
     color: white;
     width: 100%;
-    width: 100vw;
 }
 
-/* S'assurer que tout prend bien la largeur de l'écran */
-body, html {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Empêche le défilement horizontal */
-}
+/* Barre supérieure */
 
-/* Assurer que le conteneur principal prend bien toute la largeur */
-.container, .profile-container, form {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-/* Ajustement pour le menu mobile */
-.sidebar {
-    width: 70%; /* Largeur plus adaptée pour mobile */
-    max-width: 250px;
-}
-
-/* Corriger la barre supérieure pour mobile */
 .top-bar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 10px;
+    padding: 15px;
 }
 
-.top-bar h1 {
-    font-size: 28px;
-    text-align: center;
-    flex-grow: 1; /* Permet de centrer le titre */
+.top-bar h1{
+    font-size: 40px;
 }
-
-/* Ajuster le formulaire et les champs de saisie */
-input, button {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-
 
 .menu-icon {
     font-size: 35px;
@@ -61,212 +27,168 @@ input, button {
     background-color: transparent;
     border: none;
     box-shadow: none;
+    padding-left: 10px;
 }
 
-#sidebar {
+
+/* 🌟 Sidebar Container */
+.sidebar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 150px; /* Ajuste la largeur */
-    height: 100vh; /* Pleine hauteur */
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transform: translateX(-100%); /* Cachée par défaut */
-    transition: transform 0.3s ease-in-out;
-}
-.sidebar {
-    position: fixed; /* ou absolute si nécessaire */
-    top: 0;
-    left: 0;
-    width: 250px; /* Ajuste selon ta sidebar */
-    height: 100vh; /* Pour qu'elle prenne toute la hauteur */
-    background-color: #f5f5f5; /* Couleur de fond */
-    z-index: 10; /* Assure qu'elle reste en dessous */
-}
-
-.departments-bar {
-    position: relative;
-    margin-top: 100px; /* Ajuste pour descendre la barre */
-    z-index: 5; /* Doit être inférieur à celui de la sidebar */
-}
-
-#sidebar.active {
-    transform: translateX(0); /* Affichée quand active */
-}
-
-/* Styles de la sidebar */
-.sidebar {
-    width: 150px; /* Ajuste la largeur selon ton besoin */
-    height: 100vh; /* Prend toute la hauteur de l'écran */
-    overflow-y: auto; /* Active le défilement vertical si nécessaire */
+    left: -250px; /* Sidebar is hidden by default */
+    width: 250px;
+    height: 100%;
+    background: #ffffff;
+    color: #333;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Espace bien les éléments */
-    background: white;
-    position: fixed; /* Fixe la barre à gauche */
-    top: 0;
-    left: 0;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px; /* Réduit l’espace intérieur */
-}
-/* Ajuster l’espacement des liens du menu */
-.sidebar-menu {
-    flex-grow: 1; /* Permet au menu de prendre tout l’espace dispo */
-}
-
-.sidebar-menu li {
-    margin-bottom: 10px; /* Réduit l’espace entre les éléments */
-}
-
-/* Le footer reste en bas mais peut défiler si nécessaire */
-.sidebar-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: start; /* Alignement à gauche */
-    gap: 10px; /* Espace entre les éléments */
-    margin-top: 0px;
-    padding-top: 15px;
-    border-top: 1px solid #ddd; /* Séparateur propre */
-}
-.sidebar-footer a {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espacement entre l’icône et le texte */
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 30px;
-    margin-bottom: 30px;
-}
-.sidebar {
-    min-height: 100vh; /* Utilise toute la hauteur de l'écran */
-    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+    justify-content: space-between;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ddd;
+    overflow: auto;
 }
 
 
-.sidebar-menu img {
-    width: 20px; /* Taille de l'icône */
-    height: 20px;
-    margin-right: 10px; /* Espacement entre l'image et le texte */
-    vertical-align: middle;
+/* icons */
+
+/* Style for icons */
+.sidebar ul li a i,
+.sidebar-footer a i {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #555;
+    transition: color 0.3s ease-in-out;
+    gap: 5px;
 }
 
-/* Masquer la sidebar par défaut */
-.sidebar.hidden {
-    transform: translateX(-100%);
+/* Change icon color on hover */
+.sidebar ul li a:hover i,
+.sidebar-footer a:hover i {
+    color: blue;
+}
+.sidebar-footer .logout:hover i{
+    color: red;
 }
 
-/* Styles du bouton menu */
-.menu-icon {
-    font-size: 25px;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-}
-
-/* Bouton de fermeture */
+/* ✖ Close Button */
 .close-btn {
-    font-size: 20px;
-    border: none;
+    position: absolute;
+    top: 15px;
+    right: 20px;
     background: none;
+    border: none;
+    color: #333;
+    font-size: 22px;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Menu de la sidebar */
-.sidebar-menu {
+.close-btn:hover {
+    color: red;
+}
+
+/* 📌 Sidebar Navigation Links */
+.sidebar ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 60px 0 0;
 }
 
-.sidebar-menu li {
-    padding: 10px 0;
+.sidebar ul li {
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.sidebar-menu a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
+.sidebar ul li:hover {
+    background: #f0f0f0;
+}
+
+/* 🌟 Sidebar Links */
+.sidebar ul li a {
     display: flex;
     align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
+.sidebar ul li a:hover {
+    background: rgba(0, 0, 255, 0.1);
+    color: blue;
+    transform: translateX(5px);
+}
 
+/* 🔵 Active Link */
+.sidebar ul li a.active {
+    color: blue;
+    border-left: 4px solid blue;
+    background: rgba(0, 0, 255, 0.1);
+}
 
-/* Icônes */
-.sidebar-menu i,
-/* Le footer reste en bas mais peut défiler si nécessaire */
+/* ⚙ Sidebar Footer (Settings & Logout) */
 .sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    align-items: start; /* Alignement à gauche */
-    gap: 10px; /* Espace entre les éléments */
-    margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px solid #ddd; /* Séparateur propre */
+    gap: 8px;
 }
+
 .sidebar-footer a {
     display: flex;
     align-items: center;
-    gap: 8px; /* Espacement entre l’icône et le texte */
+    color: #333;
     text-decoration: none;
-    font-weight: bold;
-    margin-left: 0px;
-    margin-bottom: 30px;
-    color: black;
-}
-
-
-
-.sidebar-footer a img {
-    width: 20px; /* Taille des icônes */
-    height: 20px;
-    margin-left: 10px;
-}
-
-.sidebar-footer a.logout {
-    color: red; /* Se déconnecter en rouge */
-}
-
-.sidebar-menu li a {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 12px;
     font-weight: 600;
-    color: black; /* Couleur normale */
-    text-decoration: none;
-    padding: 10px;
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    
 }
 
-.sidebar-menu li a img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+.sidebar-footer a:hover {
+    background: rgba(0, 0, 255, 0.1);
+    color: blue;
+    transform: translateX(5px);
 }
 
-.sidebar-menu li a:hover {
-    color: #1A0495; /* Bleu au survol */
+/* 🔴 Logout Button */
+.sidebar-footer .logout {
+    color: red;
+    font-weight: bold;
 }
 
+.sidebar-footer .logout:hover {
+    background: rgba(255, 0, 0, 0.1);
+    color: darkred;
+}
 
-/* Affichage du menu */
+/* 📌 Sidebar Visibility */
 .sidebar.active {
     left: 0;
 }
-
-.profile-pic {
-    width: 100px;  /* Réduit la largeur */
-    height: 100px; /* Réduit la hauteur */
-    border-radius: 50%; /* Garde l'effet arrondi */
-    object-fit: cover; /* Ajuste l'image pour qu'elle reste bien cadrée */
+.profile-picture {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
 }
-
 .btn-container {
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    display: none;
 }
+
+
 
 #changePicBtn, #deletePicBtn {
     padding: 8px 12px;
@@ -296,19 +218,15 @@ input, button {
 }
 
 
-
 .profile-picture img {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: white;
-    
+    padding-right: 10px;
 }
 
 .top-bar .edit-icon {
     position: absolute;
-    top: 12px;
-    right: 12px;
     font-size: 20px;
     cursor: pointer;
     color: black;
@@ -320,19 +238,7 @@ input, button {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    padding-bottom:10px;
 }
-
-.profileh1 {
-    text-align: center; /* Centrer le texte */
-    font-size: 24px; /* Ajuster la taille */
-    font-weight: bold; /* Mettre en gras */
-    margin-top: 10px; /* Ajouter un petit espace au-dessus */
-    color: white; /* Couleur du texte */
-    margin-left: 30%;
-}
-
-
 
 form {
     width: 60%;
@@ -387,20 +293,18 @@ input {
     cursor: pointer;
 }
 
-.profile-container {
+.button-container {
+    margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    flex-direction: row-reverse;
+    gap: 16px; /* Adjust gap as needed */
 }
-
-
 
 .btn {
     width: fit-content;
-    border-radius: 8px; /* Adjust for rounded corners */
+    border-radius: 20px; /* Adjust for rounded corners */
     font-size: 0.875rem; /* Text size */
-    padding: 10px 20px; /* Padding for buttons */
+    padding: 10px 15px; /* Padding for buttons */
     height: 50px; /* Fixed height */
     border: 1px solid transparent; /* Default border */
     cursor: pointer; /* Pointer cursor on hover */
@@ -433,12 +337,89 @@ input {
     box-shadow: 0 0 0 4px rgba(156, 163, 175, 0.5); /* Focus ring */
 }
 
+/* ajouter les cours */
+
+.mon-profile{ 
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+/* Statistiques */
+.course-tracking {
+    width: 100%;
+    overflow-x: auto; /* Active le défilement horizontal si nécessaire */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.stats {
+    text-align: center;
+    background: #eee;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+/* Tableau des cours */
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+    overflow-x: auto;
+    max-width: 100%;
+    min-width: 600px;
+ 
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+th {
+    background-color: #342D67;
+    color: white;
+}
+
+/* Barre de progression */
+
+.progress-bar {
+    width: 100px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress-bar span {
+    height: 100%;
+    display: block;
+    border-radius: 5px;
+    background: #4CAF50;
+}
+
+/* Compétences Acquises */
+.skills ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.skills ul li {
+    display: inline-block;
+    background: #342D67;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
 /* Pied de page */
 /* Section contact */
 .contact {
-
     color: #ffffff;
-    padding: 2rem;
 }
 ul {
     list-style: none;
@@ -549,39 +530,33 @@ ul {
     margin: 1rem;
 }
 
-.gauche {
-    display: flex;
-    justify-content: space-evenly;
+.gauche  {
+  display: flex;
+  justify-content:start;
     align-items: center;
 }
 
-.place-g h1 {
-    font-size: 2rem;
+
+.gauche img, footer {
+    width: 200px;
+    height: 150px;
+
 }
 
-.place-g p {
-    font-size: 1rem;
-}
 
-.place-d p {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.down-logo {
-    width: 70px;
-    height: 70px;
-}
 
 .photo-reseau {
     width: 100%;
     max-width: 200px;
+ 
 }
 
 footer {
-    text-align: center;
+    text-align: start;
     font-size: 0.7rem;
     margin-top: 0.5rem;
+    width: auto;
+    height:auto ;
 }
 
 /* Responsive */
@@ -620,36 +595,41 @@ footer {
     
 
 }
-/* Corriger la sidebar pour qu'elle soit bien visible sur mobile */
 @media (max-width: 768px) {
-    .sidebar {
-        width: 80%;
+    /* Centrer le header */
+    .top-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
     }
-    
+    header{
+        width: 90%;
+    }
+
+    /* Faire monter le titre */
     .top-bar h1 {
-        font-size: 24px;
-        margin: 0;
+        font-size: 32px;
     }
 
-    .profile-container {
-        width: 100%;
-    }
-
-    form {
-        width: 95%;
-        margin: 0 auto;
-    }
-
-    .form-group {
+    /* Centrer la photo de profil */
+    .profile-picture {
+        display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
-    .input-box {
-        width: 100%;
+    /* Ajuster la taille de la photo */
+    .profile-picture img {
+        width: 80px;
+        height: 80px;
+        padding-right: 5px;
+        background-color: transparent;
+    }
+    .menu-icon{
+        padding-left: 5px;
     }
 
-    .menu-icon {
-        font-size: 30px;
-    }
+
 }
-
