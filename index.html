@@ -5,127 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
-    <!-- Barre de navigation -->
     <header class="top-bar">
-      <div class="profileh1">
-        <h1>Profile</h1>
-      </div>
-      <div class="logo">
-          <!-- Bouton pour ouvrir la Sidebar -->
-          <div class="menu-icon" id="toggleSidebar">☰</div>
-      </div>
+        <div class="menu-icon" onclick="toggleNav()">☰</div>
+        <div class="sidebar" id="sidebar">
+          <div>
+              <button class="close-btn" onclick="toggleNav()">☰</button>
+              <ul >
+                <li><a href="https://am11iin.github.io/dashboard-prof/" > <i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="#" class="active"><i class="fas fa-user"></i> Profil</a></li>
+                <li><a href="https://am11iin.github.io/mon-departement/"><i class="fa-solid fa-users-line"></i></i> Mon département</a></li>
+                <li><a href="https://am11iin.github.io/mes-cours-teacher/"><i class="fa-solid fa-chalkboard-user"></i> Mes cours</a></li>
+                <li><a href="https://am11iin.github.io/formation/"><i class="fa-solid fa-video"></i>Formation</a></li>
+                <li><a href="https://nesrine-fl.github.io/formation/"><i class="fa-solid fa-sliders"></i>Statut des demandes</a></li>
+                <li><a href="https://am11iin.github.io/message-prof/"> <i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="https://am11iin.github.io/notification-prof/"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="https://am11iin.github.io/aide-prof/"><i class="fas fa-question-circle"></i> Aide</a></li>
+              </ul>
+          </div>
       
-      <!-- Ajout de la photo de profil dans le header -->
-      <div class="profile-container">
-          <img src="./profil-pic.png" alt="Photo de profil" class="profile-pic" id="profilePic">
-          <input type="file" id="uploadProfilePic" accept="image/*" style="display: none;">
-          <div class="btn-container">
-              <button id="changePicBtn">Modifier</button>
-              <button id="deletePicBtn">Supprimer</button>
+          <div class="sidebar-footer">
+              <a href="https://moumouh6.github.io/Setting/"><i class="fas fa-cog"></i> Paramètres</a>
+              <a href="https://moumouh6.github.io/Interface/" class="logout">
+                  <i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
           </div>
       </div>
-  </header>
-  
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-          <button class="close-btn" id="closeSidebar">☰</button>
-      </div>
-  
-      <ul class="sidebar-menu">
-            <li><a href="https://am11iin.github.io/dashboard-prof/" > <i class="fas fa-home"></i> Accueil</a></li>
-            <li><a href="#" class="active"><i class="fas fa-user"></i> Profil</a></li>
-            <li><a href="https://am11iin.github.io/mon-departement/"><i class="fa-solid fa-users-line"></i></i> Mon département</a></li>
-            <li><a href="https://am11iin.github.io/mes-cours-teacher/"><i class="fa-solid fa-chalkboard-user"></i> Mes cours</a></li>
-            <li><a href="https://am11iin.github.io/formation/"><i class="fa-solid fa-video"></i>Formation</a></li>
-            <li><a href="https://nesrine-fl.github.io/formation/"><i class="fa-solid fa-sliders"></i>Statut des demandes</a></li>
-            <li><a href="https://am11iin.github.io/message-prof/">  <i class="fas fa-envelope"></i> Messages</a></li>
-            <li><a href="https://am11iin.github.io/notification-prof/"><i class="fas fa-bell"></i> Notifications</a></li>
-            <li><a href="https://am11iin.github.io/aide-prof/"><i class="fas fa-question-circle"></i> Aide</a></li>
-      </ul>
-  
-      <!-- Footer de la sidebar avec Paramètres et Déconnexion -->
-      <div class="sidebar-footer">
-          <a href="#" id="settings"><img src="settings.png" alt="Paramètres"> Paramètres</a>
-          <a href="https://moumouh6.github.io/Interface/" id="logout" class="logout">
-              <img src="logout.png" alt="Se déconnecter"> Se déconnecter
-          </a>
-      </div>
-  </div>
-  
+      
+        <h1>Profile</h1>
 
+        <div class="profile-picture">
+          <img src="./profil-pic.png" alt="Photo de profil" class="profile-pic" id="profilePic">
+          <input type="file" id="uploadProfilePic" accept="image/*" style="display: none;">
+            <div class="btn-container">
+               <button id="changePicBtn">Modifier</button>
+               <button id="deletePicBtn">Supprimer</button>
+            </div>
+        </div>
+
+      
+    </header>
 
     <main class="profile-container">
+      
+        
         <form>
+          <h2 class="mon-profile">Mon Profil</h2>
             <div class="form-group">
               <div class="input-box">
                   <label>Nom</label>
-                  <input type="text" id="nom" value="nom">
+                  <input type="text" id="nom" value="nom" readonly>
               </div>
               <div class="input-box">
                   <label>Prénom</label>
-                  <input type="text" id="prenom" value="prenom">
+                  <input type="text" id="prenom" value="prenom" readonly>
               </div>
             </div>
           
             <div class="form-group">
               <div class="input-box">
                   <label>Email</label>
-                  <input type="email" id="email" value="A************@gmail.com">
+                  <input type="email" id="email" value="bazouzichafik@gmail.com" readonly>
               </div>
             </div>
           
             <div class="form-group">
               <div class="input-box">
                   <label>Numéro de Téléphone</label>
-                  <input type="text" id="telephone" value="07********">
+                  <input type="text" id="telephone" value="0555555555" readonly>
               </div>
             </div>
           
             <div class="form-group">
               <div class="input-box">
                   <label>Département</label>
-                  <input type="text" id="departement" value="IT">
+                  <input type="text" id="departement" value="IT" readonly>
               </div>
               <div class="input-box">
                   <label>Function</label>
-                  <input type="text" id="fonction" value="professeur">
+                  <input type="text" id="fonction" value="professeur" readonly>
               </div>
             </div>
 
-            <div class="form-group">
-                <div class="input-box password-box">
-                    <label>Mot de Passe</label>
-                    <input type="password" id="password" value="123" required>
-                    <span class="toggle-password"><img src="./Vector.png" alt="password"></span>
-                </div>
-            </div>
-            <div class="button-container">
-                    <button class="btn save-btn" type="button">
-                        <div class="btn-content">Enregistrer</div>
-                    </button>
-                    <button class="btn cancel-btn" type="button">
-                        Annuler
-                    </button>
-            </div>
-        </form>
+            
+                  <!-- 🟢 Statistiques Générales -->
+        <section class="stats">
+          <h3>📊 Statistiques Globales</h3>
+          <p><strong>Total des Cours Suivis :</strong> <span id="totalCourses">0</span></p>
+          <p><strong>Cours Terminés :</strong> <span id="completedCourses">0</span></p>
+          <p><strong>Progression Moyenne :</strong> <span id="averageProgress">0%</span></p>
+        </section>
+
+      
+
+      <!-- 🟢 Suivi des Cours -->
+      <section class="course-tracking">
+          <h3>📚 Mes Cours Suivis</h3>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Nom du Cours</th>
+                      <th>Progrès</th>
+                      <th>Date de Début</th>
+                      <th>Date de Fin</th>
+                      <th>Statut</th>
+                  </tr>
+              </thead>
+              <tbody id="courseTableBody">
+                  <!-- Les cours seront ajoutés dynamiquement avec JavaScript -->
+              </tbody>
+          </table>
+      </section>
+
+      <!-- 🟢 Compétences Acquises -->
+      <section class="skills">
+          <h3>🎯 Compétences Acquises</h3>
+          <ul id="skillsList">
+              <!-- Les compétences seront ajoutées dynamiquement -->
+          </ul>
+      </section>
+      </form>
+    
     </main>
 
     <section class="contact" id="contact">
         <div class="container-contact">
             <div class="partie-g">
                 <div class="gauche">
-                    <div class="place-g">
-                        <h1>GIG</h1>
-                        <p>مجموعة الخليج للتأمين</p>
-                        <p>GULF INSURANCE GROUP</p>
-                    </div>
-                    <div class="place-d">
-                        <img class="down-logo" src="./logo-gig.png" alt="logo-gig">
-                        <p>ALGERIA</p>
-                    </div>
+                  <div>
+                    <img src="logo-gig1.png" alt="logo">
+                  </div>
                 </div>
                 <footer>©2025 – GIG.DZ – GULF INSURANCE GROUP – Tous droits réservés.</footer>
             </div>
